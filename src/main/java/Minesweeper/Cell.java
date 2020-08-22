@@ -23,6 +23,9 @@ public class Cell {
         col = c;
     }
     /* Set the cell as a bomb. */
+
+    public boolean getIsShown() { return isShown; }
+
     public void setAsBomb(){
         isBomb = true;
         bombsNear = -1;
@@ -54,24 +57,27 @@ public class Cell {
     public int getCol(){
         return col;
     }
+    /* Get the number of bombs near a cell. */
+    public int getBombsNear() { return bombsNear; }
+    public boolean getIsBomb() { return isBomb; }
     /* Show the symbol state to the player. */
     public String getVisibleState() {
         if (isShown){
             return getHiddenState();
         }else if (flagged){
-            return "X ";
+            return "f  ";
         } else {
-            return "  ";
+            return "*  ";
         }
     }
     /* Show player the status of a newly flipped tile */
     public String getHiddenState(){
         if (isBomb){
-            return "B ";
+            return "x  ";
         } else if (bombsNear > 0) {
-            return bombsNear + " ";
+            return bombsNear + "  ";
         }else{
-            return "  ";
+            return "   ";
         }
     }
 }
